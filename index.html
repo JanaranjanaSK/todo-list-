@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet"href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.context {
+    width: 100%;
+    position: absolute;
+    top: 50vh;
+    text-align: center;
+}
+
+.context h1 {
+    color: #fff;
+    font-size: 50px;
+}
+
+.area {
+    
+    background:linear-gradient(135deg,#153677,#4e085f);;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    z-index: 0;
+}
+
+.circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+.circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+.circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+.circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+.circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+.circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+.circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+.circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+.circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+.circles li:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+/* Existing To-Do List Styling */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+    z-index: 3;
+    position: relative;
+}
+
+     
+.todo-app h2{
+    color:#002765;
+    display:flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.todo-app h2 img{
+    width:30px;
+    margin-left:10px;
+}
+.row{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #edeef0;
+    border-radius: 30px;
+    padding-left:20px;
+    margin-bottom:25px;
+}
+input{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    padding:10px;
+    font-weight:14px;
+}
+button{
+    border:none;
+    outline:none;
+    padding:16px 50px;
+    background:#ff5945;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    border-radius: 40px;
+}
+
+#list-container li{
+   list-style: none;
+   font-size: 17px;
+   padding: 12px 8px 12px 50px;
+   user-select:none;
+   cursor:pointer;
+   position:relative;
+}
+#list-container li::before{
+    content:'';
+    position:absolute;
+    height:23px;
+    width:23px;
+    border-radius:50%;
+    background-image:url(images/unchecked.png);
+    background-size:cover;
+    background-position: center;
+    top:10px;
+    left:8px;
+}
+#list-container li.checked{
+    color:#555;
+    text-decoration:line-through;
+}
+#list-container li.checked::before{
+    background-image:url(images/checked.png);
+}
+#list-container li span{
+    position:absolute;
+    right:0;
+    top:5px;
+    width:40px;
+    height:40px;
+    font-size:22px;
+    color:#555;
+    line-height:40px;
+    text-align:center;
+}
+ul li span:hover{
+    background:#edeef0;
+}
+
+    </style>
+</head>
+<body>
+
+    <body>
+       
+    
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="container">
+                <div class="todo-app">
+                    <h2>To - Do List<img src="images/icon.png"></h2>
+                    <div class="row">
+                        <input type="text" id="input-box" placeholder="Add your text">
+                        <button onclick="AddTask()">Add</button>
+                    </div>
+                    <ul id="list-container"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+   <script >
+    const inputBox = document.getElementById("input-box");
+const listContainer= document.getElementById("list-container");
+function AddTask(){
+    if(inputBox.value === ''){
+        alert("you must write something"); // if we does not type anything in input it give alert message of type something
+    }
+    else{
+        let li = document.createElement("li"); // if we type anything it first add the one  list
+          li.innerHTML = inputBox.value; //it take value from input for the list
+          listContainer.appendChild(li); // it send the value to the list-container
+          let span = document.createElement("span"); // it is used to add close x shape and it is used for close the list
+          span.innerHTML="\u00d7"
+          li.appendChild(span); 
+    }
+    inputBox.value="";
+    saveData(); // it is used to save the data until we remove it and it also store data after refreshment 
+}
+listContainer.addEventListener("click",function(e){
+if(e.target.tagName==="LI"){ // if the user click the circle (tagname) it will goes to checked 
+    e.target.classList.toggle("checked");
+    saveData();
+}
+else if(e.target.tagName==="SPAN"){ // if the user click span (close button) it will remove the list
+    e.target.parentElement.remove();
+    saveData();
+}
+},false);
+inputBox.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") { // Check if the pressed key is "Enter".
+        AddTask(); // Call the AddTask function.
+    }
+});
+function saveData(){
+    localStorage.setItem("data",listContainer.innerHTML); // it is used to dsave data after refreshment also
+}
+function showTak(){
+    listContainer.innerHTML = localStorage.getItem("data");
+}
+showTak();
+   </script>
+</body>
+</html>
